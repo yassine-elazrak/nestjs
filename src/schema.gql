@@ -1,0 +1,22 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Playlist {
+  playlistId: String!
+  name: String!
+  owner: String!
+}
+
+type Query {
+  getPlaylist(playlistId: String!): Playlist!
+}
+
+type Mutation {
+  createPlaylist(createPlaylistInput: CreatePlaylistInput!): Playlist!
+}
+
+input CreatePlaylistInput {
+  name: String!
+  owner: String!
+}

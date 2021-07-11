@@ -10,15 +10,13 @@ export class PlaylistResolver {
 
   @Query(() => Playlist)
   getPlaylist(@Args() getPlaylistArgs: GetPlaylistArgs) {
-    // let playlist = this.palylistService.getPlaylist(getPlaylistArgs);
-    // return playlist;
-    return "ururee"
+    let playlist = this.palylistService.getPlaylist(getPlaylistArgs);
+    return playlist;
   }
 
   @Mutation(() => Playlist)
-  createPlaylist(@Args() createPlaylistInput: CreatePlaylistInput) {
-    // let playlist = this.palylistService.createPlaylist(createPlaylistInput)
-    // return playlist;
-    return "kfkfk"
+  createPlaylist(@Args('createPlaylistInput') createPlaylistInput: CreatePlaylistInput) {
+    let playlist = this.palylistService.createPlaylist(createPlaylistInput)
+    return playlist;
   }
 }
