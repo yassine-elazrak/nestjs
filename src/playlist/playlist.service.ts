@@ -3,23 +3,21 @@ import { Playlist } from './models/playlist';
 import { CreatePlaylistInput } from './dto/input/create-playlist.input';
 import { GetPlaylistArgs } from './dto/args/get-playlist.args';
 import { v4 as uuid4 } from 'uuid';
+import { PrismaService } from '../prisma/prisma.service';
+import { Playlist as PlaylistModule } from '@prisma/client';
 
 export class PlaylistService {
-  private playlists: Playlist[] = [
-    { playlistId: '33', name: 'yassine33', owner: 'azrak33' },
-    { playlistId: '11', name: 'yassine11', owner: 'azrak11' },
-    { playlistId: '22', name: 'yassine22', owner: 'azrak22' },
-  ];
+  
+  constructor(private readonly prisma: PrismaService) {}
 
-  public createPlaylist(createPlaylistInput: CreatePlaylistInput) {
+  async createPlaylist(createPlaylistInput: CreatePlaylistInput) {
     const playlist: Playlist = { playlistId: uuid4(), ...createPlaylistInput };
-    this.playlists.push(playlist);
-    return playlist;
+    return this.prisma.Playlist.create(playlist);
   }
 
-  public getPlaylist(getPlaylistArgs: GetPlaylistArgs) {
-    return this.playlists.find(
-      (item) => item.playlistId === getPlaylistArgs.playlistId,
-    );
+  async getPlaylist(getPlaylistArgs: GetPlaylistArgs) {
+    return this.prisma.playlist.findunique({
+      PlaylistId:getPlaylistArgs.playlistId
+    })
   }
 }
