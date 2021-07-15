@@ -12,6 +12,7 @@ import { PrismaModule } from './prisma/prisma.module';
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
       debug: true,
       playground: true,
+      installSubscriptionHandlers: true,
     }),
     PrismaModule,
   ],

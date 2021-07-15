@@ -10,8 +10,6 @@ export class PlaylistService {
   constructor(private readonly prisma: PrismaService) {}
 
   async createPlaylist(createPlaylistInput: Prisma.PlaylistCreateInput) {
-    const { name , owner} = createPlaylistInput
-    console.log({haw : this.prisma})
     return this.prisma.playlist.create({
       data : {
         ...createPlaylistInput
